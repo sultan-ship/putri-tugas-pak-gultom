@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Academic Profile</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at top left, #5a4613, transparent 30%),
+                radial-gradient(circle at bottom right, #3d2e0c, transparent 30%),
+                #080808;
+            color: white;
+            min-height: 100vh;
+        }
+
+        header {
+            height: 75px;
+            padding: 0 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #5c4a1c;
+        }
+
+        .logo {
+            color: #e6ca69;
+            font-size: 21px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .top-button {
+            padding: 9px 18px;
+            border-radius: 20px;
+            border: 1px solid #806b29;
+            background: transparent;
+            color: #e6ca69;
+        }
+
+        .layout {
+            display: flex;
+            min-height: calc(100vh - 75px);
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            width: 230px;
+            padding: 25px 15px;
+            border-right: 1px solid #4c3e1b;
+            background: rgba(10,10,10,0.85);
+        }
+
+        .sidebar h3 {
+            color: #777;
+            font-size: 11px;
+            letter-spacing: 2px;
+            margin: 10px 12px 15px;
+        }
+
+        .menu {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 8px;
+            border-radius: 10px;
+            border: 1px solid transparent;
+            background: transparent;
+            color: #ccc;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .menu:hover,
+        .menu.active {
+            background: #211b0b;
+            border-color: #65531f;
+            color: #e6ca69;
+        }
+
+        /* CONTENT */
+
+        .content {
+            flex: 1;
+            padding: 45px;
+            max-width: 1100px;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .small-title {
+            color: #c5a94e;
+            font-size: 12px;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 42px;
+            color: #e6ca69;
+            margin-bottom: 15px;
+        }
+
+        .description {
+            color: #999;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* CARD */
+
+        .card {
+            background: #111;
+            border: 1px solid #55451c;
+            border-radius: 18px;
+            padding: 30px;
+            margin-top: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+        }
+
+        .card h2 {
+            color: #e6ca69;
+            margin-bottom: 22px;
+        }
+
+        /* FORM */
+
+        label {
+            display: block;
+            color: #aaa;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            background: #0b0b0b;
+            color: white;
+            border: 1px solid #51431d;
+            border-radius: 9px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #e6ca69;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        /* BUTTON */
+
+        .gold-button {
+            padding: 14px 22px;
+            border: none;
+            border-radius: 9px;
+            background: linear-gradient(90deg, #a17d20, #e6ca69);
+            color: #111;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .gold-button:hover {
+            opacity: 0.85;
+        }
+
+        /* BIODATA */
+
+        .biodata {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .data {
+            background: #181818;
+            border: 1px solid #302918;
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        .data small {
+            color: #777;
+        }
+
+        .data p {
+            color: #eee;
+            font-weight: bold;
+            margin-top: 6px;
+        }
+
+        /* NILAI */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #28200d;
+            color: #e6ca69;
+        }
+
+        th, td {
+            padding: 14px;
+            border-bottom: 1px solid #302918;
+            text-align: left;
+        }
+
+        td {
+            color: #ddd;
+        }
+
+        .nilai {
+            color: #e6ca69;
+            font-weight: bold;
+        }
+
+        .hasil-nilai {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .hasil-box {
+            background: #181818;
+            border: 1px solid #51431d;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .hasil-box small {
+            color: #777;
+        }
+
+        .hasil-box h2 {
+            color: #e6ca69;
+            margin-top: 8px;
+        }
+
+        /* HOME */
+
+        .home-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .home-card {
+            background: #111;
+            border: 1px solid #51431d;
+            padding: 22px;
+            border-radius: 15px;
+        }
+
+        .home-card .icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .home-card h3 {
+            color: #e6ca69;
+            margin-bottom: 7px;
+        }
+
+        .home-card p {
+            color: #888;
+            font-size: 13px;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width: 850px) {
+
+            .home-cards {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .sidebar {
+                width: 190px;
+            }
+        }
+
+        @media(max-width: 600px) {
+
+            .layout {
+                display: block;
+            }
+
+            .sidebar {
+                width: 100%;
+                display: flex;
+                overflow-x: auto;
+                border-right: none;
+                border-bottom: 1px solid #4c3e1b;
+            }
+
+            .sidebar h3 {
+                display: none;
+            }
+
+            .menu {
+                min-width: 120px;
+                margin: 5px;
+            }
+
+            .content {
+                padding: 25px;
+            }
+
+            .biodata {
+                grid-template-columns: 1fr;
+            }
+
+            .home-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .hasil-nilai {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+        }
+
+        @media print {
+
+            header,
+            .sidebar,
+            .gold-button {
+                display: none;
+            }
+
+            body {
+                background: white;
+                color: black;
+            }
+
+            .content {
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        ACADEMIC PROFILE
+    </div>
+
+    <button class="top-button">
+        STUDENT
+    </button>
+
+</header>
+
+
+<div class="layout">
+
+    <!-- MENU -->
+
+    <aside class="sidebar">
+
+        <h3>MENU UTAMA</h3>
+
+        <button class="menu active" onclick="bukaHalaman('beranda', this)">
+            🏠 Beranda
+        </button>
+
+        <button class="menu" onclick="bukaHalaman('profil', this)">
+            👤 Biodata
+        </button>
+
+        <button class="menu" onclick="bukaHalaman('nilai', this)">
+            📊 Nilai
+        </button>
+
+        <button class="menu" onclick="bukaHalaman('jadwal', this)">
+            📅 Jadwal
+        </button>
+
+        <button class="menu" onclick="bukaHalaman('prestasi', this)">
+            🏆 Prestasi
+        </button>
+
+        <button class="menu" onclick="bukaHalaman('kehadiran', this)">
+            📋 Kehadiran
+        </button>
+
+        <h3>LAINNYA</h3>
+
+        <button class="menu" onclick="window.print()">
+            🖨 Cetak
+        </button>
+
+        <button class="menu" onclick="alert('Terima kasih sudah menggunakan Academic Profile!')">
+            🚪 Keluar
+        </button>
+
+    </aside>
+
+
+    <!-- ISI WEBSITE -->
+
+    <main class="content">
+
+
+        <!-- BERANDA -->
+
+        <section id="beranda" class="page active">
+
+            <div class="small-title">
+                DIGITAL ACADEMIC SYSTEM
+            </div>
+
+            <h1>
+                Academic<br>
+                Profile
+            </h1>
+
+            <p class="description">
+                Masukkan NIS dan nama sekolah untuk melihat
+                biodata serta hasil nilai siswa.
+            </p>
+
+            <div class="home-cards">
+
+                <div class="home-card">
+                    <div class="icon">👤</div>
+                    <h3>Biodata</h3>
+                    <p>Lihat informasi siswa.</p>
+                </div>
+
+                <div class="home-card">
+                    <div class="icon">📊</div>
+                    <h3>Nilai</h3>
+                    <p>Lihat hasil akademik.</p>
+                </div>
+
+                <div class="home-card">
+                    <div class="icon">📅</div>
+                    <h3>Jadwal</h3>
+                    <p>Lihat jadwal pelajaran.</p>
+                </div>
+
+                <div class="home-card">
+                    <div class="icon">🏆</div>
+                    <h3>Prestasi</h3>
+                    <p>Lihat prestasi siswa.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- BIODATA -->
+
+        <section id="profil" class="page">
+
+            <div class="small-title">
+                STUDENT PROFILE
+            </div>
+
+            <h1>Biodata Siswa</h1>
+
+            <!-- FORM -->
+
+            <div class="card">
+
+                <h2>Cek Biodata</h2>
+
+                <div class="form-group">
+
+                    <label>NIS</label>
+
+                    <input
+                        type="text"
+                        id="inputNis"
+                        placeholder="Masukkan NIS"
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Nama Sekolah</label>
+
+                    <input
+                        type="text"
+                        id="inputSekolah"
+                        placeholder="Masukkan nama sekolah"
+                    >
+
+                </div>
+
+                <button class="gold-button" onclick="cekBiodata()">
+                    ✦ CEK BIODATA
+                </button>
+
+            </div>
+
+
+            <!-- HASIL BIODATA -->
+
+            <div class="card" id="hasilBiodata" style="display:none;">
+
+                <h2>Data Siswa</h2>
+
+                <div class="biodata">
+
+                    <div class="data">
+                        <small>Nama Lengkap</small>
+                        <p id="namaSiswa"></p>
+                    </div>
+
+                    <div class="data">
+                        <small>NIS</small>
+                        <p id="nisSiswa"></p>
+                    </div>
+
+                    <div class="data">
+                        <small>Kelas</small>
+                        <p id="kelasSiswa"></p>
+                    </div>
+
+                    <div class="data">
+                        <small>Jurusan</small>
+                        <p id="jurusanSiswa"></p>
+                    </div>
+
+                    <div class="data">
+                        <small>Sekolah</small>
+                        <p id="sekolahSiswa"></p>
+                    </div>
+
+                    <div class="data">
+                        <small>Status</small>
+                        <p class="nilai">Siswa Aktif</p>
+                    </div>
+
+                </div>
+
+                <button class="gold-button" onclick="lihatNilai()">
+                    📊 LIHAT NILAI SAYA
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- NILAI -->
+
+        <section id="nilai" class="page">
+
+            <div class="small-title">
+                ACADEMIC RESULT
+            </div>
+
+            <h1>Nilai Saya</h1>
+
+            <div class="card">
+
+                <h2>Hasil Akademik</h2>
+
+                <table>
+
+                    <tr>
+                        <th>No</th>
+                        <th>Mata Pelajaran</th>
+                        <th>Nilai</th>
+                    </tr>
+
+                    <tr>
+                        <td>1</td>
+                        <td>Bahasa Indonesia</td>
+                        <td class="nilai">88</td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>Matematika</td>
+                        <td class="nilai">84</td>
+                    </tr>
+
+                    <tr>
+                        <td>3</td>
+                        <td>Bahasa Inggris</td>
+                        <td class="nilai">90</td>
+                    </tr>
+
+                    <tr>
+                        <td>4</td>
+                        <td>Pemrograman Web</td>
+                        <td class="nilai">92</td>
+                    </tr>
+
+                    <tr>
+                        <td>5</td>
+                        <td>Basis Data</td>
+                        <td class="nilai">89</td>
+                    </tr>
+
+                    <tr>
+                        <td>6</td>
+                        <td>Produktif RPL</td>
+                        <td class="nilai">94</td>
+                    </tr>
+
+                </table>
+
+
+                <div class="hasil-nilai">
+
+                    <div class="hasil-box">
+                        <small>TOTAL</small>
+                        <h2>537</h2>
+                    </div>
+
+                    <div class="hasil-box">
+                        <small>RATA-RATA</small>
+                        <h2>89.50</h2>
+                    </div>
+
+                    <div class="hasil-box">
+                        <small>PREDIKAT</small>
+                        <h2>A</h2>
+                    </div>
+
+                </div>
+
+                <button class="gold-button" onclick="window.print()">
+                    🖨 CETAK NILAI
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- JADWAL -->
+
+        <section id="jadwal" class="page">
+
+            <div class="small-title">
+                SCHOOL SCHEDULE
+            </div>
+
+            <h1>Jadwal Pelajaran</h1>
+
+            <div class="card">
+
+                <table>
+
+                    <tr>
+                        <th>Hari</th>
+                        <th>Mata Pelajaran</th>
+                        <th>Jam</th>
+                    </tr>
+
+                    <tr>
+                        <td>Senin</td>
+                        <td>Bahasa Indonesia</td>
+                        <td>07.30 - 09.00</td>
+                    </tr>
+
+                    <tr>
+                        <td>Selasa</td>
+                        <td>Pemrograman Web</td>
+                        <td>07.30 - 10.00</td>
+                    </tr>
+
+                    <tr>
+                        <td>Rabu</td>
+                        <td>Basis Data</td>
+                        <td>08.00 - 10.30</td>
+                    </tr>
+
+                    <tr>
+                        <td>Kamis</td>
+                        <td>Matematika</td>
+                        <td>07.30 - 09.00</td>
+                    </tr>
+
+                    <tr>
+                        <td>Jumat</td>
+                        <td>PBO</td>
+                        <td>08.00 - 10.00</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRESTASI -->
+
+        <section id="prestasi" class="page">
+
+            <div class="small-title">
+                ACHIEVEMENT
+            </div>
+
+            <h1>Prestasi</h1>
+
+            <div class="home-cards">
+
+                <div class="home-card">
+                    <div class="icon">🥇</div>
+                    <h3>Juara 1</h3>
+                    <p>Lomba Pemrograman</p>
+                </div>
+
+                <div class="home-card">
+                    <div class="icon">🏆</div>
+                    <h3>Peserta</h3>
+                    <p>Kompetisi IT</p>
+                </div>
+
+                <div class="home-card">
+                    <div class="icon">⭐</div>
+                    <h3>Penghargaan</h3>
+                    <p>Siswa Aktif</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- KEHADIRAN -->
+
+        <section id="kehadiran" class="page">
+
+            <div class="small-title">
+                ATTENDANCE
+            </div>
+
+            <h1>Kehadiran</h1>
+
+            <div class="home-cards">
+
+                <div class="home-card">
+                    <div class="icon">✅</div>
+                    <h3>Hadir</h3>
+                    <p>90%</p>
+                </div>
+
+                <div class="home-card">
+                    <div class="icon">📄</div>
+                    <h3>Izin</h3>
+                    <p>5%</p>
+                </div>
+
+                <div class="home-card">
+                    <div class="icon">🤒</div>
+                    <h3>Sakit</h3>
+                    <p>3%</p>
+                </div>
+
+                <div class="home-card">
+                    <div class="icon">❌</div>
+                    <h3>Alpa</h3>
+                    <p>2%</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script>
+
+    /* PINDAH MENU */
+
+    function bukaHalaman(nama, tombol) {
+
+        let halaman = document.querySelectorAll(".page");
+
+        halaman.forEach(function(item) {
+            item.classList.remove("active");
+        });
+
+        document.getElementById(nama).classList.add("active");
+
+        let menu = document.querySelectorAll(".menu");
+
+        menu.forEach(function(item) {
+            item.classList.remove("active");
+        });
+
+        tombol.classList.add("active");
+    }
+
+
+    /* CEK BIODATA */
+
+    function cekBiodata() {
+
+        let nis = document.getElementById("inputNis").value;
+        let sekolah = document.getElementById("inputSekolah").value;
+
+        if (nis == "" || sekolah == "") {
+
+            alert("Silakan isi NIS dan nama sekolah terlebih dahulu!");
+
+            return;
+        }
+
+
+        /*
+        DATA SISWA
+        GANTI DATA DI BAGIAN INI
+        */
+
+        let nama = "PUTRI KANAYA AL ZIRA SYAH";
+        let kelas = "XI RPL";
+        let jurusan = "Rekayasa Perangkat Lunak";
+
+
+        document.getElementById("namaSiswa").innerText = nama;
+
+        document.getElementById("nisSiswa").innerText = nis;
+
+        document.getElementById("kelasSiswa").innerText = kelas;
+
+        document.getElementById("jurusanSiswa").innerText = jurusan;
+
+        document.getElementById("sekolahSiswa").innerText = sekolah;
+
+
+        document.getElementById("hasilBiodata").style.display = "block";
+
+    }
+
+
+    /* TOMBOL LIHAT NILAI */
+
+    function lihatNilai() {
+
+        bukaHalaman(
+            "nilai",
+            document.querySelectorAll(".menu")[2]
+        );
+
+    }
+
+</script>
+
+</body>
+</html>

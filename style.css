@@ -1,0 +1,362 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background:
+        radial-gradient(circle at top left, #5a4613, transparent 30%),
+        radial-gradient(circle at bottom right, #3d2e0c, transparent 30%),
+        #080808;
+    color: white;
+    min-height: 100vh;
+}
+
+/* HEADER */
+
+header {
+    height: 75px;
+    padding: 0 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #5c4a1c;
+}
+
+.logo {
+    color: #e6ca69;
+    font-size: 21px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.top-button {
+    padding: 9px 18px;
+    border-radius: 20px;
+    border: 1px solid #806b29;
+    background: transparent;
+    color: #e6ca69;
+}
+
+/* LAYOUT */
+
+.layout {
+    display: flex;
+    min-height: calc(100vh - 75px);
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    width: 230px;
+    padding: 25px 15px;
+    border-right: 1px solid #4c3e1b;
+    background: rgba(10,10,10,0.85);
+}
+
+.sidebar h3 {
+    color: #777;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin: 10px 12px 15px;
+}
+
+.menu {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: #ccc;
+    text-align: left;
+    cursor: pointer;
+}
+
+.menu:hover,
+.menu.active {
+    background: #211b0b;
+    border-color: #65531f;
+    color: #e6ca69;
+}
+
+/* CONTENT */
+
+.content {
+    flex: 1;
+    padding: 45px;
+    max-width: 1100px;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.small-title {
+    color: #c5a94e;
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 42px;
+    color: #e6ca69;
+    margin-bottom: 15px;
+}
+
+.description {
+    color: #999;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* CARD */
+
+.card {
+    background: #111;
+    border: 1px solid #55451c;
+    border-radius: 18px;
+    padding: 30px;
+    margin-top: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+}
+
+.card h2 {
+    color: #e6ca69;
+    margin-bottom: 22px;
+}
+
+/* FORM */
+
+label {
+    display: block;
+    color: #aaa;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    background: #0b0b0b;
+    color: white;
+    border: 1px solid #51431d;
+    border-radius: 9px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #e6ca69;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+/* BUTTON */
+
+.gold-button {
+    padding: 14px 22px;
+    border: none;
+    border-radius: 9px;
+    background: linear-gradient(90deg, #a17d20, #e6ca69);
+    color: #111;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.gold-button:hover {
+    opacity: 0.85;
+}
+
+/* BIODATA */
+
+.biodata {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.data {
+    background: #181818;
+    border: 1px solid #302918;
+    border-radius: 10px;
+    padding: 16px;
+}
+
+.data small {
+    color: #777;
+}
+
+.data p {
+    color: #eee;
+    font-weight: bold;
+    margin-top: 6px;
+}
+
+/* NILAI */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #28200d;
+    color: #e6ca69;
+}
+
+th,
+td {
+    padding: 14px;
+    border-bottom: 1px solid #302918;
+    text-align: left;
+}
+
+td {
+    color: #ddd;
+}
+
+.nilai {
+    color: #e6ca69;
+    font-weight: bold;
+}
+
+.hasil-nilai {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.hasil-box {
+    background: #181818;
+    border: 1px solid #51431d;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.hasil-box small {
+    color: #777;
+}
+
+.hasil-box h2 {
+    color: #e6ca69;
+    margin-top: 8px;
+}
+
+/* HOME */
+
+.home-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.home-card {
+    background: #111;
+    border: 1px solid #51431d;
+    padding: 22px;
+    border-radius: 15px;
+}
+
+.home-card .icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.home-card h3 {
+    color: #e6ca69;
+    margin-bottom: 7px;
+}
+
+.home-card p {
+    color: #888;
+    font-size: 13px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 850px) {
+
+    .home-cards {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .sidebar {
+        width: 190px;
+    }
+}
+
+@media(max-width: 600px) {
+
+    .layout {
+        display: block;
+    }
+
+    .sidebar {
+        width: 100%;
+        display: flex;
+        overflow-x: auto;
+        border-right: none;
+        border-bottom: 1px solid #4c3e1b;
+    }
+
+    .sidebar h3 {
+        display: none;
+    }
+
+    .menu {
+        min-width: 120px;
+        margin: 5px;
+    }
+
+    .content {
+        padding: 25px;
+    }
+
+    .biodata {
+        grid-template-columns: 1fr;
+    }
+
+    .home-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .hasil-nilai {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+}
+
+/* CETAK */
+
+@media print {
+
+    header,
+    .sidebar,
+    .gold-button {
+        display: none;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .content {
+        padding: 0;
+    }
+}
